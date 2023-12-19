@@ -42,23 +42,23 @@ maxZoom:15
 // Define the departments and their centroids
   var departments = [
     { antenne: 'Antenne Charente', coordinates: [45.638, 0.179],
-    nom: 'Mélanie Adam', contact: '06 17 90 62 07 / 05 45 90 67 51' },
-    { antenne: 'Antenne Charente-Maritime', coordinates: [45.937, -0.96], nom: 'Olivier Allenou', contact: '06 11 47 05 01 / 05 46 84 72 08' },
-    { antenne: 'Antenne Corrèze', coordinates: [45.6333, 2.04], nom: 'Mathieu Bonhomme', contact: '07 49 32 65 66 / 05 55 03 98 22' },
-    { antenne: 'Antenne Creuse', coordinates: [46.24, 1.49], nom: 'Yvan Grugier', contact: '06 52 47 57 93 / 05 55 03 09 03' },
-    { antenne: 'Antenne Dordogne', coordinates: [45.035, 0.370], nom: 'Maxime Cosson', contact: '07 66 51 86 89 / 05 53 81 39 57' },
-    { antenne: 'Antenne Gironde', coordinates: [44.765, -0.559], nom: 'Carole Decker', contact: '06 51 06 63 27' },
-    { antenne: 'Antenne Pays Basque / Landes', coordinates: [43.493, -1.295], nom: 'Tangi Le Moal', contact: '07 66 73 04 58 / 05 59 58 16 89' },
-    { antenne: 'Antenne Lot-et-Garonne', coordinates: [44.290, 0.277], nom: 'Olivier Vannucci', contact: '07 66 15 96 27' },
-    { antenne: 'Antenne Béarn', coordinates: [43.2993, -0.3908], nom: 'Natacha Bouet', contact: '06 51 17 32 93 / 05 59 04 49 11' },
-    { antenne: 'Antenne Deux-Sèvres', coordinates: [46.32, -0.4560], nom: 'Raphaël Grimaldi', contact: '06 11 47 04 91 / 05 49 73 20 02' },
-    { antenne: 'Antenne Vienne', coordinates: [46.576, 0.327], nom: 'Julian Branciforti', contact: '06 11 47 04 68 / 05 49 50 36 10' },
-    { antenne: 'Antenne Haute-Vienne', coordinates: [45.888, 1.1354], nom: 'Erwan Hennequin', contact: '06 95 57 53 39 / 05 55 03 98 23' },
-    { antenne: 'Service RH (Billere)', coordinates: [43.299, -0.3898], nom: 'Alexandra le Chevalier', contact: '05 59 04 49 15 / 07 49 09 20 74' },
-    { antenne: 'Service DAFC (Billere)', coordinates: [43.2995, -0.3901], nom: 'Elodie Dupuy', contact: '05 59 04 49 12' },
-    { antenne: 'Service DSI (Coulounieix Chamiers)', coordinates: [45.185, 0.688], contact: 'Mikaël Paillet', contact: '06 95 13 63 94' },
-    { antenne: 'Service Communication (Saint Gence)', coordinates: [45.889, 1.1356], nom: 'Sandrine Fouetillou', contact: '07 82 16 89 54 / 05 55 03 98 21' },
-    { antenne: 'Service Travaux (Saint Gence)', coordinates: [45.8885, 1.1362], nom: 'Joël Bordas', contact: '06 76 37 11 04 / 05 55 03 09 02' }
+    nom: 'Mélanie Adam', contact: '06 17 90 62 07 / 05 45 90 67 51', adresse: "46 rue de Quebec <br> 16000 <br> ANGOULEME"},
+    { antenne: 'Antenne Charente-Maritime', coordinates: [45.937, -0.96], nom: 'Olivier Allenou', contact: '06 11 47 05 01 / 05 46 84 72 08', adresse: "1 Quai de l'Hermione <br> 17300 <br> ROCHEFORT" },
+{ antenne: 'Antenne Corrèze', coordinates: [45.6333, 2.04], nom: 'Mathieu Bonhomme', contact: '07 49 32 65 66 / 05 55 03 98 22', adresse: "Le Bourg <br> 19170 <br> SAINT-MERD-LES-OUSSINES" },
+    { antenne: 'Antenne Creuse', coordinates: [46.24, 1.49], nom: 'Yvan Grugier', contact: '06 52 47 57 93 / 05 55 03 09 03', adresse: "Place Joachim du Chalard <br> 23300 <br> LA SOUTERRAINE" },
+    { antenne: 'Antenne Dordogne', coordinates: [45.035, 0.370], nom: 'Maxime Cosson', contact: '07 66 51 86 89 / 05 53 81 39 57', adresse: "21 rue de la Libération <br> 24400 <br> MUSSIDAN" },
+    { antenne: 'Antenne Gironde', coordinates: [44.765, -0.559], nom: 'Carole Decker', contact: '06 51 06 63 27', adresse: "7 Impasse Jean Pages<br> 33140 <br> VILLENAVE D'ORNON" },
+    { antenne: 'Antenne Pays Basque / Landes', coordinates: [43.493, -1.295], nom: 'Tangi Le Moal', contact: '07 66 73 04 58 / 05 59 58 16 89', adresse: "156 rue de Gascogne <br> 64240 <br> URT" },
+    { antenne: 'Antenne Lot-et-Garonne', coordinates: [44.290, 0.277], nom: 'Olivier Vannucci', contact: '07 66 15 96 27', adresse: "16 route de Saint-Léon <br> 47160 <br> DAMAZAN" },
+    { antenne: 'Antenne Béarn', coordinates: [43.2993, -0.3908], nom: 'Natacha Bouet', contact: '06 51 17 32 93 / 05 59 04 49 11', adresse: "28 route de Bayonne<br> 64140 <br> BILLERE" },
+    { antenne: 'Antenne Deux-Sèvres', coordinates: [46.32, -0.4560], nom: 'Raphaël Grimaldi', contact: '06 11 47 04 91 / 05 49 73 20 02', adresse: "45 rue Villersexel<br> 79000 <br> NIORT" },
+    { antenne: 'Antenne Vienne', coordinates: [46.576, 0.318], nom: 'Julian Branciforti', contact: '06 11 47 04 68 / 05 49 50 36 10', adresse: "44 boulevard Pont Achard <br> 86000 <br> POITIERS" },
+    { antenne: 'Antenne Haute-Vienne', coordinates: [45.888, 1.1341], nom: 'Erwan Hennequin', contact: '06 95 57 53 39 / 05 55 03 98 23', adresse: "6 ruelle du Theil <br> 87510 <br> ST GENCE" },
+    { service: 'Service RH (Billere)', coordinates: [43.299, -0.3898], nom: 'Alexandra le Chevalier', contact: '05 59 04 49 15 / 07 49 09 20 74', adresse: "28 Route de Bayonne <br> 64140 <br> BILLERE" },
+    { service: 'Service DAFC (Billere)', coordinates: [43.2995, -0.3901], nom: 'Elodie Dupuy', contact: '05 59 04 49 12', adresse: "28 Route de Bayonne <br> 64140 <br> BILLERE" },
+    { service: 'Service DSI (Coulounieix Chamiers)', coordinates: [45.185, 0.688], nom: 'Mikaël Paillet', contact: '06 95 13 63 94' , adresse: "Résidence l'orée du Bois <br> 24660 <br> COULOUNIEIX CHAMIERS" },
+    { service: 'Service Communication (Saint Gence)', coordinates: [45.890, 1.1356], nom: 'Sandrine Fouetillou', contact: '07 82 16 89 54 / 05 55 03 98 21', adresse: "6 ruelle du Theil <br> 87510 <br> ST GENCE" },
+    { service: 'Service Travaux (Saint Gence)', coordinates: [45.8885, 1.1372], nom: 'Joël Bordas', contact: '06 76 37 11 04 / 05 55 03 09 02', adresse: "6 ruelle du Theil <br> 87510 <br> ST GENCE" }
   ];
 
     function addCircleMarker(department) {
@@ -84,15 +84,19 @@ maxZoom:15
     
     
 
-    function generatePopupContent(department) {
-      return (
-        "<img src='https://cen-nouvelle-aquitaine.org/wp-content/uploads/2020/09/logo_cenna.jpg' height='60%' width='60%' align='center' /><br><br>" +
-        "<div class='popup-content'>" +
-        "<span class='popup-department'>" + department.antenne + "</span><br>" +
-        "<b><font color='#327599'>Responsable d'antenne: </font></b>" + department.nom + "<br>" +
-        "<b><font color='#327599'>Téléphone: </font></b>" + department.contact + "<br>"
-      );
-    }
+ function generatePopupContent(department) {
+  var responsableLabel = department.antenne ? 'Responsable d\'antenne' : 'Responsable de service';
+
+  return (
+    "<img src='https://cen-nouvelle-aquitaine.org/wp-content/uploads/2020/09/logo_cenna.jpg' height='60%' width='60%' align='center' /><br><br>" +
+    "<div class='popup-content'>" +
+    "<span class='popup-department'>" + (department.antenne || department.service) + "</span><br>" +
+    "<b><font color='#327599'>" + responsableLabel + ": </font></b>" + department.nom + "<br>" +
+    "<b><font color='#327599'>Téléphone: </font></b>" + department.contact + "<br>" +
+        "<b><font color='#327599'>Adresse: <br></font></b>" + 
+ department.adresse + "<br>"
+  );
+}
 
     // Add CircleMarkers for each department
     departments.forEach(addCircleMarker);
@@ -113,7 +117,7 @@ maxZoom:15
             "marker-color": "#7e7e7e",
             "marker-size": "medium",
             "marker-symbol": "",
-            "antenne": "Siège",
+            "antenne": "Siège social",
             "address": "6, ruelle du Theil",
             "city": "87510 Saint-Gence",
             "tel": "(33) 05 55 03 29 07"
