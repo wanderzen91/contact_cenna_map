@@ -1,0 +1,189 @@
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<!-- Contenu WEB -->
+    <div id="mapid" class="lf" style="width: 99%; height: 500px;"></div>
+
+
+<style>
+.lf img {
+    max-height: none;
+}
+  
+    .popup-content {
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .popup-department {
+      font-size: 15px;
+      font-weight: bold;
+      color: #327599;
+    }
+  
+</style>
+
+    <!-- Script -->
+  <script>
+    var map = L.map('mapid').setView([46.603354, 1.888334], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+maxZoom:15
+    }).addTo(map);
+
+    var markers = L.markerClusterGroup({
+      disableClusteringAtZoom: 15
+    });
+
+// Define the departments and their centroids
+  var departments = [
+    { antenne: 'Antenne Charente', coordinates: [45.638, 0.179],
+    nom: 'Mélanie Adam', contact: '06 17 90 62 07 / 05 45 90 67 51' },
+    { antenne: 'Antenne Charente-Maritime', coordinates: [45.937, -0.96], nom: 'Olivier Allenou', contact: '06 11 47 05 01 / 05 46 84 72 08' },
+    { antenne: 'Antenne Corrèze', coordinates: [45.6333, 2.04], nom: 'Mathieu Bonhomme', contact: '07 49 32 65 66 / 05 55 03 98 22' },
+    { antenne: 'Antenne Creuse', coordinates: [46.24, 1.49], nom: 'Yvan Grugier', contact: '06 52 47 57 93 / 05 55 03 09 03' },
+    { antenne: 'Antenne Dordogne', coordinates: [45.035, 0.370], nom: 'Maxime Cosson', contact: '07 66 51 86 89 / 05 53 81 39 57' },
+    { antenne: 'Antenne Gironde', coordinates: [44.765, -0.559], nom: 'Carole Decker', contact: '06 51 06 63 27' },
+    { antenne: 'Antenne Pays Basque / Landes', coordinates: [43.493, -1.295], nom: 'Tangi Le Moal', contact: '07 66 73 04 58 / 05 59 58 16 89' },
+    { antenne: 'Antenne Lot-et-Garonne', coordinates: [44.290, 0.277], nom: 'Olivier Vannucci', contact: '07 66 15 96 27' },
+    { antenne: 'Antenne Béarn', coordinates: [43.2993, -0.3908], nom: 'Natacha Bouet', contact: '06 51 17 32 93 / 05 59 04 49 11' },
+    { antenne: 'Antenne Deux-Sèvres', coordinates: [46.32, -0.4560], nom: 'Raphaël Grimaldi', contact: '06 11 47 04 91 / 05 49 73 20 02' },
+    { antenne: 'Antenne Vienne', coordinates: [46.576, 0.327], nom: 'Julian Branciforti', contact: '06 11 47 04 68 / 05 49 50 36 10' },
+    { antenne: 'Antenne Haute-Vienne', coordinates: [45.888, 1.1354], nom: 'Erwan Hennequin', contact: '06 95 57 53 39 / 05 55 03 98 23' },
+    { antenne: 'Service RH (Billere)', coordinates: [43.299, -0.3898], nom: 'Alexandra le Chevalier', contact: '05 59 04 49 15 / 07 49 09 20 74' },
+    { antenne: 'Service DAFC (Billere)', coordinates: [43.2995, -0.3901], nom: 'Elodie Dupuy', contact: '05 59 04 49 12' },
+    { antenne: 'Service DSI (Coulounieix Chamiers)', coordinates: [45.185, 0.688], contact: 'Mikaël Paillet', contact: '06 95 13 63 94' },
+    { antenne: 'Service Communication (Saint Gence)', coordinates: [45.889, 1.1356], nom: 'Sandrine Fouetillou', contact: '07 82 16 89 54 / 05 55 03 98 21' },
+    { antenne: 'Service Travaux (Saint Gence)', coordinates: [45.8885, 1.1362], nom: 'Joël Bordas', contact: '06 76 37 11 04 / 05 55 03 09 02' }
+  ];
+
+    function addCircleMarker(department) {
+      var circle = L.circleMarker(department.coordinates, {
+        radius: 6,
+        fillColor: '#327599',
+        color: '#327599',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+      });
+
+      circle.bindPopup(generatePopupContent(department), { autoClose: false, closeOnClick: false });
+      markers.addLayer(circle); 
+            circle.on('mouseover', function () {
+        this.openPopup();
+      });
+
+      circle.on('mouseout', function () {
+        this.closePopup();
+      }); // Add marker to the cluster group
+    }
+    
+    
+
+    function generatePopupContent(department) {
+      return (
+        "<img src='https://cen-nouvelle-aquitaine.org/wp-content/uploads/2020/09/logo_cenna.jpg' height='60%' width='60%' align='center' /><br><br>" +
+        "<div class='popup-content'>" +
+        "<span class='popup-department'>" + department.antenne + "</span><br>" +
+        "<b><font color='#327599'>Responsable d'antenne: </font></b>" + department.nom + "<br>" +
+        "<b><font color='#327599'>Téléphone: </font></b>" + department.contact + "<br>"
+      );
+    }
+
+    // Add CircleMarkers for each department
+    departments.forEach(addCircleMarker);
+
+    map.addLayer(markers); // Add marker cluster group to the map
+
+    // Additional GeoJSON layer
+    const geoJSONData = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [1.1356607, 45.8883596]
+          },
+          "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "antenne": "Siège",
+            "address": "6, ruelle du Theil",
+            "city": "87510 Saint-Gence",
+            "tel": "(33) 05 55 03 29 07"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [0.3274023, 46.5761637]
+          },
+          "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "antenne": "Site de Poitiers",
+            "address": "44 Boulevard Pont Achard",
+            "city": "86000 Poitiers",
+            "tel": "05 49 50 42 59"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-0.390357, 43.299134]
+          },
+          "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "antenne": "Site de Billère",
+            "address": "28 Route de Bayonne",
+            "city": "64140 Billère",
+            "tel": "05 59 32 65 19"
+          }
+        }
+      ]
+    };
+
+    function generatePopupContentGeoJSON(properties) {
+      return (
+        "<img src='https://cen-nouvelle-aquitaine.org/wp-content/uploads/2020/09/logo_cenna.jpg' height='60%' width='60%' align='center' /><br><br>" +
+        "<div class='popup-content'>" +
+        "<span class='popup-department'>" + properties.antenne + "</span><br>" +
+        "<b><font color='#327599'>Adresse: </font></b> <br>" +
+        properties.address + "<br>" +
+        properties.city + "<br>" +
+        "<b><font color='#327599'>Téléphone: </font></b>" + properties.tel + "<br>"
+      );
+    }
+
+    var geoJSONLayer = L.geoJSON(geoJSONData, {
+      pointToLayer: function (feature, latlng) {
+        var geojsonMarkerOptions = {
+          radius: 8,
+          fillColor: "#ff7800",
+          color: "#000",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.8
+        };
+        return L.circleMarker(latlng, geojsonMarkerOptions);
+      }
+    });
+
+    geoJSONLayer.bindPopup(function (layer) {
+      return generatePopupContentGeoJSON(layer.feature.properties);
+    });
+
+    map.addLayer(geoJSONLayer);
+
+  </script>
